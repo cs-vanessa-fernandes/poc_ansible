@@ -1,29 +1,10 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Repositório para demonstração do uso do ansible para automatizar a criação de ambientes na AWS.
 
-### What is this repository for? ###
+### POC Ansible ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* Criação de playbooks com ec2 e lambda
+* V0.1
+* Repositório: https://cs-vanessa-fernandes@bitbucket.org/cs-vanessa-fernandes/poc_ansible.git
 
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
