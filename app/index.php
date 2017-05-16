@@ -1,5 +1,5 @@
 <?php
-$texto = "<span>Hello</span> World jenkins! in ";
+$texto = "<span>Hello</span> Poc Ansible ";
 
 ?>
 
@@ -18,7 +18,7 @@ $texto = "<span>Hello</span> World jenkins! in ";
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
 
-    <title> Projeto Piloto Devops </title>
+    <title> Poc Ansible </title>
 
     <style>
 
