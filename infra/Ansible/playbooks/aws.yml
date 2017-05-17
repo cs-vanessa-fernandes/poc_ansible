@@ -1,23 +1,8 @@
 ---
-
-- name: Criando Server na AWS
+- name: POC Ansible
   hosts: localhost
   remote_user: ubuntu
   become: False
-  tasks:
-    - name: Criando instancia ec2
-      ec2:
-        region: us-east-1
-        key_name: redeteste
-        instance_type: t2.micro
-        image: ami-80861296
-        wait: yes
-        group: awseb-e-muqfmrmch3-stack-AWSEBSecurityGroup-132A27F342XU9
-        count: 1
-        vpc_subnet_id: subnet-d64052a2
-        assign_public_ip: yes
-        instance_tags:
-          Name: poc_ansible
-          Ambiente: DEV-ControlRede
-        state: present
-      register: ec2
+  roles:
+    - create_ec2 
+#    - tags

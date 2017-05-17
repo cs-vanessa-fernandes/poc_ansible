@@ -1,0 +1,26 @@
+"Tags": [{
+          "Key": "Name",
+          "Value": "poc_ansible"
+        }, {
+          "Key": "Sigla",
+          "Value": "WT"
+        }, {
+          "Key": "CVI_ID",
+          "Value": "DP-2016-0028624"
+        }, {
+	  "Key": "Ambiente",
+	  "Value": "DEV-ControlRede"
+	},
+          "Key": "FinalidadeFuncional",
+          "Value": "Automacao EC2"
+        }, {
+          "Key": "FinalidadeArquitetura",
+          "Value": "WEB"
+        }, {
+	"Key": "OS",
+          "Value": "Ubuntu Server 16.04LTS"
+        }, {
+          "Key": "Creation",
+          "Value": "Ansible v2.3"
+        }
+]
