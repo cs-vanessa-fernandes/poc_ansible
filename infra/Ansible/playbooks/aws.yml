@@ -18,6 +18,6 @@
         assign_public_ip: yes
         instance_tags:
           Name: poc_ansible
-          Ambiente: DEV
+          Ambiente: DEV-ControlRede
         state: present
       register: ec2
