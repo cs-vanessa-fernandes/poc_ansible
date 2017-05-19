@@ -1,16 +1,11 @@
 ---
-- name: Criando Tags
-  ec2:
-    region: us-east-1
-    instance_tags:
-      Name: poc_ansible
-      Sigla: WT
-      CVI_ID: DP-2016-0028624
-      Ambiente: DEV-ControlRede
-      FinalidadeFuncional: Automacao EC2
-      FinalidadeArquitetura: WEB
-      OS: Ubuntu Server 16.04LTS
-      Provisionamento: OffAt=06:00 / OnOff=22:00; Day=Every
-      Backup: Window=00:00-2:00; Max=0:30; Day=Every
-      Creation: Ansible v2.3
+- name: TAG Instances
+  ec2_tag: resource=i-0c2bb8115657aa02f region=us-east-1
+  args:
+    tags: { Name: "poc_ansible"}
+  with_together:
+    - ec2.instances
+
+
+
 

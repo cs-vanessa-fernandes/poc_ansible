@@ -1,27 +1,20 @@
 ---
 - name: Criando instancia EC2 
   ec2:
-    region: us-east-1
+    region: "{{ aws_region }}"
     key_name: redeteste
-    instance_type: t2.micro
-    image: ami-80861296
+    instance_type: "{{ aws_instanceType }}"
+    image: "{{ aws_base_amis }}"
     wait: yes
-    group: awseb-e-muqfmrmch3-stack-AWSEBSecurityGroup-132A27F342XU9
-    count: 1
-    vpc_subnet_id: subnet-d64052a2
+    group: "{{ security_group }}"
+    count: "{{ count }}"
+    vpc_subnet_id: "{{ subnet }}"
     assign_public_ip: yes
     state: present
-    instance_tags:
-      Name: poc_ansible
-      Sigla: WT
-      CVI_ID: DP-2016-0028624
-      Ambiente: DEV
-      FinalidadeFuncional: Automacao EC2
-      FinalidadeArquitetura: WEB
-      OS: Ubuntu Server 16.04LTS
-      Provisionamento: OffAt=06:00 / OnOff=22:00; Day=Every
-      Backup: Window=00:00-2:00; Max=0:30; Day=Every
-      Creation: Ansible v2.3
   register: ec2
 
+- name: Adicionar instancia ao grupo
+  add_host: hostname={{item[0].private_ip}} ec2_tag_Name={{item[1]}} groupname=launched
+  with_together:
+    - ec2.instances
 

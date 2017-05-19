@@ -1,0 +1,40 @@
+---
+- name: Cria um novo EC2
+  ec2:
+    key_name: cers_aws
+    group: '{{sec_group}}'
+    instance_type: '{{inst_type}}'
+    image: '{{ami_id}}'
+    region: '{{region}}'
+    vpc_subnet_id: '{{subnet_id}}'
+    wait : yes
+    count: '{{count}}'
+    assign_public_ip : '{{public_ip}}'
+    volumes:
+      - device_name: /dev/xvda
+        device_type: gp2
+        volume_size: 20
+        delete_on_termination: true
+      - device_name: /dev/xvdb
+        device_type: gp2
+        volume_size: 30
+        delete_on_termination: true
+  register: ec2
+
+- name: Alocar EIP
+  ec2_eip: instance_id={{item.id}} region={{region}}
+  with_items: ec2.instances
+
+- name: Adicionar instance ao host group
+  add_host: hostname={{item[0].private_ip}} ec2_tag_Name={{item[1]}} groupname=launched
+  with_together:
+    - ec2.instances
+    - '{{instances}}'
+
+- name: TAG Instances
+  ec2_tag: resource={{item[0].id}} region={{region}}
+  args:
+    tags: { Name: '{{item[1]}}', Env: '{{tag_env}}', Ansible: "Yes", Type: '{{tag_type}}', Product: '{{tag_product}}'}
+  with_together:
+    - ec2.instances
+    - '{{instances}}'
