@@ -1,8 +1,20 @@
 ---
-- name: POC Ansible
+- name: Criando instancia EC2
   hosts: localhost
+  gather_facts: false
+  connection: local
   remote_user: ubuntu
-  become: False
+  become: yes
   roles:
     - create_ec2 
-#   - tags
+
+- name: Adicionando novas tags
+  hosts: launched
+  gather_facts: false
+  remote_user: ubuntu
+  become: yes
+  roles:
+    - tags
+
+
+

@@ -9,12 +9,32 @@
     group: "{{ security_group }}"
     count: "{{ count }}"
     vpc_subnet_id: "{{ subnet }}"
-    assign_public_ip: yes
+    assign_public_ip: '{{ public_ip }}'
+    private_ip: "{{ private_ip }}"
     state: present
+    instance_tags:
+      Name: poc_ansible
   register: ec2
 
-- name: Adicionar instancia ao grupo
-  add_host: hostname={{item[0].private_ip}} ec2_tag_Name={{item[1]}} groupname=launched
+- name: Alocar EIP
+  ec2_eip: 
+    instance_id: "{{ item.id }}"
+    region: "{{ aws_region }}"
+  with_items: 
+    - '{{ ec2.instances }}'
+
+- name: Adicionar instancia ao host group
+  add_host: 
+    hostname: "{{ item[0].private_ip }}"
+    ec2_tag_Name: "{{ item[1] }}"
+    groupname: launched
   with_together:
-    - ec2.instances
+    - '{ ec2.instances }'
+    - '{{ instances }}'
+
+- name: teste
+  debug:
+    msg:  "{{ ec2.instances}}"
+
+
 

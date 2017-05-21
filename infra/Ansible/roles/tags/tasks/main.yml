@@ -1,10 +1,21 @@
 ---
 - name: TAG Instances
-  ec2_tag: resource=i-0c2bb8115657aa02f region=us-east-1
+  ec2_tag:
+    instance_id: "i-065caf2f1fd612630"
+    region: "{{ aws_region }}"
+#   "tag:Name": "poc_ansible"
+
   args:
-    tags: { Name: "poc_ansible"}
-  with_together:
-    - ec2.instances
+    tags:
+      Sigla: WT
+      CVI_ID: DP-2016-0028624
+      Ambiente: DEV
+      FinalidadeFuncional: Poc Ansible
+      FinalidadeArquitetura: WEB
+      OS: Ubuntu Server 16.04LTS
+      Provisionamento: Day=Every
+      Backup: Window=0:00-2:00; Max= 0:30
+      Creation: Ansible version 2.3
 
 
 
