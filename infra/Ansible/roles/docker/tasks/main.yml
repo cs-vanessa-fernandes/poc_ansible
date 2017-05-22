@@ -1,0 +1,14 @@
+---
+- name: Instalando os pre-requisitos
+  become: True
+  apt:
+    name: "{{item}}"
+    state: latest
+    install_recommends: no
+  with_items:
+    - curl
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+  tags: docker

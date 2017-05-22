@@ -1,22 +1,32 @@
 ---
 - name: TAG Instances
-  ec2_tag:
-    instance_id: "i-065caf2f1fd612630"
+  ec2_tag: 
+    resource: "{{ id }}"
     region: "{{ aws_region }}"
+  args:
+    tags: { Name: "{{ Name }}", Sigla: "{{ Sigla }}", CVI_ID: "{{ CVI_ID }}", Ambiente: "{{ Ambiente }}", FinalidadeFuncional: "{{ FinalidadeFuncional }}", FinalidadeArquitetura: "{{ FinalidadeArquitetura }}", OS: "{{ OS }}", Provisionamento: "{{ Provisionamento }}", Backup: "{{ Backup }}", Creation: "{{ Creation }}" }
+#  with_together:
+#    - ec2.instances
+#    - '{{instances}}'
+
+#- name: TAG Instances
+#  ec2_tag:
+#    instance_id: "i-065caf2f1fd612630"
+#    region: "{{ aws_region }}"
 #   "tag:Name": "poc_ansible"
 
-  args:
-    tags:
-      Sigla: WT
-      CVI_ID: DP-2016-0028624
-      Ambiente: DEV
-      FinalidadeFuncional: Poc Ansible
-      FinalidadeArquitetura: WEB
-      OS: Ubuntu Server 16.04LTS
-      Provisionamento: Day=Every
-      Backup: Window=0:00-2:00; Max= 0:30
-      Creation: Ansible version 2.3
-
+#  args:
+#    tags:
+#      Sigla: WT
+#      CVI_ID: DP-2016-0028624
+#      Ambiente: DEV
+#      FinalidadeFuncional: Poc Ansible
+#      FinalidadeArquitetura: WEB
+#      OS: Ubuntu Server 16.04LTS
+#      Provisionamento: Day=Every
+#      Backup: Window=0:00-2:00; Max= 0:30
+#      Creation: Ansible version 2.3
+#
 
 
 

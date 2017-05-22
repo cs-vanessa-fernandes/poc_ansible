@@ -1,2 +1,13 @@
-id: i-065caf2f1fd612630
+id: i-0cab2c036e095e70a
 aws_region: us-east-1
+Name: poc_ansible
+Sigla: WT
+CVI_ID: DP-2016-0028624
+Ambiente: DEV
+FinalidadeFuncional: Poc Ansible
+FinalidadeArquitetura: WEB
+OS: "Ubuntu Server 16.04LTS"
+Provisionamento: "Day=Every"
+Backup: "Window=0:00-2:00; Max= 0:30"
+Creation: "Ansible version 2.3"
+
