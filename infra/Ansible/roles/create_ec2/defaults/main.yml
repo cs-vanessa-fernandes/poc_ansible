@@ -1,15 +1,17 @@
-aws_base_amis: ami-772aa961
+aws_base_amis: ami-f4cc1de2
 ec2_name: poc_ansible
 vpc_name: "poc_ansible"
-vpc_cidr_block: "10.0.0.0/16"
+vpc_cidr_block: "10.1.0.0/16"
 aws_region: us-east-1
+aws_zone: us-east-1a
 key_priv: ~/redeteste.pem
-security_group: "awseb-e-muqfmrmch3-stack-AWSEBSecurityGroup-132A27F342XU9"
+security_group: "ansible"
 public_ip: "yes"
-subnet: subnet-d64052a2
+subnet: subnet-f24e64a9
 aws_instanceType: t2.micro
 count: 1
 instances:
   - poc_ansible
-private_ip: "172.31.28.218"
-
+cidr_ip: 187.50.200.224/32
+cidr_ip2: 
+#group_id: sg-fb4a1d85

@@ -1,10 +1,16 @@
 ---
-- name: TAG Instances
-  ec2_tag: 
-    resource: "{{ id }}"
-    region: "{{ aws_region }}"
-  args:
-    tags: { Name: "{{ Name }}", Sigla: "{{ Sigla }}", CVI_ID: "{{ CVI_ID }}", Ambiente: "{{ Ambiente }}", FinalidadeFuncional: "{{ FinalidadeFuncional }}", FinalidadeArquitetura: "{{ FinalidadeArquitetura }}", OS: "{{ OS }}", Provisionamento: "{{ Provisionamento }}", Backup: "{{ Backup }}", Creation: "{{ Creation }}" }
+- ec2_remote_facts:
+    filters:
+      instance-state-name: running
+      "tag:Name": poc_ansible
+
+
+#- name: Atualizando tags
+#  ec2_tag: 
+#    resource: "{{ id[1] }}"
+#    region: "{{ aws_region }}"
+#  args:
+#    tags: { Name: "{{ Name }}", Sigla: "{{ Sigla }}", CVI_ID: "{{ CVI_ID }}", Ambiente: "{{ Ambiente }}", FinalidadeFuncional: "{{ FinalidadeFuncional }}", FinalidadeArquitetura: "{{ FinalidadeArquitetura }}", OS: "{{ OS }}", Provisionamento: "{{ Provisionamento }}", Backup: "{{ Backup }}", Creation: "{{ Creation }}", Ansible: "Yes", Teste: "Van" }
 #  with_together:
 #    - ec2.instances
 #    - '{{instances}}'

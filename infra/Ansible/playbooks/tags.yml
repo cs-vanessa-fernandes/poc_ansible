@@ -1,12 +1,12 @@
 ---
-- name: Criando infraestrutura AWS - EC2
+- name: Atualizando Tags
   hosts: localhost
   gather_facts: false
   connection: local
   remote_user: ubuntu
   become: yes
   roles:
-    - create_ec2 
+    - tags
 
 
 
