@@ -45,18 +45,18 @@
         from_port: 22
         to_port: 22
         cidr_ip: "{{ cidr_ip }}"
-      - proto: tcp
-        from_port: 80
-        to_port: 80
-        cidr_ip: "{{ cidr_ip }}"
-      - proto: tcp
-        from_port: 80
-        to_port: 80
-        group_id: "{{ group_id }}"
-      - proto: tcp
-        from_port: 8080
-        to_port: 8080
-        cidr_ip: "{{ cidr_ip }}"
+#      - proto: tcp
+#        from_port: 80
+#        to_port: 80
+#        cidr_ip: "{{ cidr_ip }}"
+#      - proto: tcp
+#        from_port: 80
+#        to_port: 80
+#        group_id: "{{ group_id }}"
+#      - proto: tcp
+#        from_port: 8080
+#        to_port: 8080
+#        cidr_ip: "{{ cidr_ip }}"
     rules_egress:
       - proto: all
         cidr_ip: 0.0.0.0/0
