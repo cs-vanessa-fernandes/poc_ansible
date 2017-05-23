@@ -11,5 +11,5 @@ subnet: subnet-f24e64a9
 aws_instanceType: t2.micro
 count: 1
 cidr_ip2: 187.50.200.224/32
-cidr_ip: 177.125.131.254/32
+cidr_ip: 187.50.200.224/32
 group_id: sg-5d653323
