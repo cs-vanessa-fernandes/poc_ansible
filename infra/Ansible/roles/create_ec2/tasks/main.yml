@@ -69,7 +69,7 @@
     key_name: redeteste
     group: "{{ security_group }}"
     instance_type: "{{aws_instanceType}}"
-    id: "{{ aws_region }}.{{ aws_instanceType }}.poc3"
+    id: "{{ aws_region }}.{{ aws_instanceType }}.poc4"
     image: "{{aws_base_amis}}"
     ec2_url: "{{ aws_zone }}.amazonaws.com"
     region: "{{ aws_region }}"
