@@ -5,13 +5,11 @@ vpc_cidr_block: "10.1.0.0/16"
 aws_region: us-east-1
 aws_zone: us-east-1a
 key_priv: ~/redeteste.pem
-security_group: "ansible"
+security_group: "ec2_hosts"
 public_ip: "yes"
 subnet: subnet-f24e64a9
 aws_instanceType: t2.micro
 count: 1
-instances:
-  - poc_ansible
-cidr_ip: 187.50.200.224/32
-cidr_ip2: 
-#group_id: sg-fb4a1d85
+cidr_ip2: 187.50.200.224/32
+cidr_ip: 177.125.131.254/32
+group_id: sg-5d653323
