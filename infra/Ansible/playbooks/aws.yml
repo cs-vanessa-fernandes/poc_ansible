@@ -4,7 +4,7 @@
   gather_facts: false
   connection: local
   remote_user: ubuntu
-  become: yes
+  become: no
   roles:
     - create_ec2 
 
