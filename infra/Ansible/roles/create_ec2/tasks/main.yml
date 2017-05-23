@@ -85,7 +85,7 @@
 #      Name: "ansible"
 #      Ansible: "Yes" 
 
-- name: Criando instancia EC2
+- name: Criando instancia AWS EC2
   become: false
   ec2:
     key_name: redeteste
