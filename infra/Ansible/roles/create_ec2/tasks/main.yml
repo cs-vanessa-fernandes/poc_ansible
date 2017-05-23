@@ -111,7 +111,7 @@
 - name: debug groups
   debug: var=groups
 
-- name: TAG Instances zones
+- name: Adicionando Tags a instancia
   become: false
   ec2_tag: resource={{item.id}} region={{aws_region}}
   args:
