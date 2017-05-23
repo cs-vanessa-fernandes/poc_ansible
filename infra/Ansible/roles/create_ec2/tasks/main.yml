@@ -45,18 +45,6 @@
         from_port: 22
         to_port: 22
         cidr_ip: "{{ cidr_ip }}"
-#      - proto: tcp
-#        from_port: 80
-#        to_port: 80
-#        cidr_ip: "{{ cidr_ip }}"
-#      - proto: tcp
-#        from_port: 80
-#        to_port: 80
-#        group_id: "{{ group_id }}"
-#      - proto: tcp
-#        from_port: 8080
-#        to_port: 8080
-#        cidr_ip: "{{ cidr_ip }}"
     rules_egress:
       - proto: all
         cidr_ip: 0.0.0.0/0
@@ -75,23 +63,13 @@
    tags:
      Name: "{{ vpc_name }}"
 
-#- name: Tag the security group with a name
-#  local_action:
-#    module: ec2_tag
-#    resource: "{{aws_sg.group_id}}"
-#    region: "{{ aws_region }}"
-#    state: present
-#    tags:
-#      Name: "ansible"
-#      Ansible: "Yes" 
-
 - name: Criando instancia AWS EC2
   become: false
   ec2:
     key_name: redeteste
     group: "{{ security_group }}"
     instance_type: "{{aws_instanceType}}"
-    id: "{{ aws_region }}.{{ aws_instanceType }}.poc2"
+    id: "{{ aws_region }}.{{ aws_instanceType }}.poc3"
     image: "{{aws_base_amis}}"
     ec2_url: "{{ aws_zone }}.amazonaws.com"
     region: "{{ aws_region }}"
@@ -130,44 +108,3 @@
   with_items:
     - "{{ec2_instances.instances}}"
 
-#- meta: refresh_inventory
-
-#- name: Criando instancia EC2 
-#  ec2:
-#    region: "{{ aws_region }}"
-#    key_name: redeteste
-#    instance_type: "{{ aws_instanceType }}"
-#    image: "{{ aws_base_amis }}"
-#    wait: yes
-#    group: "{{ security_group }}"
-#    count: "{{ count }}"
-#    vpc_subnet_id: "{{ subnet }}"
-#    assign_public_ip: '{{ public_ip }}'
-#    private_ip: "{{ private_ip }}"
-#    state: present
-#    instance_tags:
-#      Name: poc_ansible
-#  register: ec2
-
-#- name: Alocar EIP
-#  ec2_eip: 
-#    instance_id: "{{ item.id }}"
-#    region: "{{ aws_region }}"
-#  with_items: 
-#    - '{{ ec2.instances }}'
-#
-#- name: Adicionar instancia ao host group
-#  add_host: 
-#    hostname: "{{ item[0].private_ip }}"
-#    ec2_tag_Name: "{{ item[1] }}"
-#    groupname: launched
-#  with_together:
-#    - '{ ec2.instances }'
-#    - '{{ instances }}'
-#
-#- name: teste
-#  debug:
-#    msg:  "{{ ec2.instances}}"
-#
-#
-#
